@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
-import { MembersContext } from '../../context/MembersContext'
+import { useGetConsultingQuery } from '../../App/slices/ConsultingSlice'
 
 function Members() {
-  let { members, setMembers } = useContext(MembersContext)
+  let { data, isLoading } = useGetConsultingQuery()
 
 
   return (
@@ -14,23 +13,27 @@ function Members() {
         </div>
         <div className="card-wrapper">
           {
-            members.map((member) => (
-              <div className="card" key={member._id}>
-                <div className="image">
-                  <img src={member.image} alt="" />
-                </div>
-                <div className="content">
-                  <div className="head">
-                    <p>{member.name}</p>
-                    <span>{member.specialization}</span>
+            isLoading ? (
+              <h1>...Loading</h1>
+            ) : (
+              data.map((member) => (
+                <div className="card" key={member._id}>
+                  <div className="image">
+                    <img src={member.image} alt="" />
                   </div>
-                  <div className="btns">
-                    <button>✖️</button>
-                    <button>❤️</button>
+                  <div className="content">
+                    <div className="head">
+                      <p>{member.name}</p>
+                      <span>{member.specialization}</span>
+                    </div>
+                    <div className="btns">
+                      <button>✖️</button>
+                      <button>❤️</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              ))
+            )
           }
         </div>
       </div>

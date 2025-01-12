@@ -21,27 +21,22 @@ function Wishlist() {
           <h1>Wishlist</h1>
           <div className="card-wrapper">
             {
-              loading ? (
-
-                <h1>Go Home</h1>
-              ) : (
-                favorites.map((fav) => (
-                  <div className="card">
-                    <div className="image">
-                      <img src={fav.image} alt="" />
-                    </div>
-                    <div className="content">
-                  <div className="head">
-                    <p>{member.name}</p>
-                    <span>{member.specialization}</span>
+              favorites.map((fav) => (
+                <div className="card">
+                  <div className="image">
+                    <img src={fav.image} alt="" />
                   </div>
-                  <div className="btns">
-                    <button>💔</button>
+                  <div className="content">
+                    <div className="head">
+                      <p>{fav.name}</p>
+                      <span>{fav.specialization}</span>
+                    </div>
+                    <div className="btns">
+                      <button>💔</button>
+                    </div>
                   </div>
                 </div>
-                  </div>
-                ))
-              )
+              ))
             }
           </div>
         </div>

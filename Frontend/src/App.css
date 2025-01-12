@@ -390,9 +390,7 @@
               color: #ff2143;
               font-size: 18px;
             }
-            &:hover img {
-              transform: scale(1.05);
-            }
+       
           }
           .btns {
             display: flex;
@@ -404,6 +402,9 @@
               font-size: 18px;
             }
           }
+        }
+        &:hover img {
+          transform: scale(1.1);
         }
       }
     }
@@ -467,13 +468,31 @@
             transition: all 0.5s ease;
           }
         }
-        p {
-          font-weight: bold;
-          font-size: 20px;
-        }
-        span {
-          color: #ff2143;
-          font-size: 18px;
+        .content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .head {
+            p {
+              font-weight: bold;
+              font-size: 20px;
+            }
+            span {
+              color: #ff2143;
+              font-size: 18px;
+            }
+        
+          }
+          .btns {
+            display: flex;
+            gap: 10px;
+            button {
+              cursor: pointer;
+              border: 1px solid #ff2143;
+              padding: 6px;
+              font-size: 18px;
+            }
+          }
         }
         &:hover img {
           transform: scale(1.05);
@@ -579,4 +598,3 @@
     }
   }
 }
-
