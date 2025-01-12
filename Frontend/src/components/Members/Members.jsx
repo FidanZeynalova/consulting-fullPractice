@@ -19,8 +19,16 @@ function Members() {
                 <div className="image">
                   <img src={member.image} alt="" />
                 </div>
-                <p>{member.name}</p>
-                <span>{member.specialization}</span>
+                <div className="content">
+                  <div className="head">
+                    <p>{member.name}</p>
+                    <span>{member.specialization}</span>
+                  </div>
+                  <div className="btns">
+                    <button>✖️</button>
+                    <button>❤️</button>
+                  </div>
+                </div>
               </div>
             ))
           }
