@@ -4,10 +4,11 @@ import { Helmet } from "react-helmet";
 
 function Wishlist() {
   let { favorites, setFavorites } = useContext(FavoritesMembers)
-  let [loading, setLoading] = useState(true)
-  console.log(loading);
+  function handleDelete(fav) {
+    let find = favorites.filter((item) => item._id !== fav._id)
+    setFavorites(find)
 
-  console.log(favorites);
+  }
 
   return (
 
@@ -22,7 +23,7 @@ function Wishlist() {
           <div className="card-wrapper">
             {
               favorites.map((fav) => (
-                <div className="card">
+                <div className="card" key={fav._id}>
                   <div className="image">
                     <img src={fav.image} alt="" />
                   </div>
@@ -32,7 +33,7 @@ function Wishlist() {
                       <span>{fav.specialization}</span>
                     </div>
                     <div className="btns">
-                      <button>💔</button>
+                      <button onClick={() => handleDelete(fav)}>💔</button>
                     </div>
                   </div>
                 </div>

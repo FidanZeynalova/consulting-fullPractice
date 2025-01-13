@@ -4,7 +4,7 @@ function Features() {
   return (
     <div className='Features'>
       <div className="image">
-        <img src="https://preview.colorlib.com/theme/consultingbiz/assets/img/gallery/section_bg02.jpg.webp" alt=""style={{width:"100%",height:"6 00px"}} />
+        <img src="https://preview.colorlib.com/theme/consultingbiz/assets/img/gallery/section_bg02.jpg.webp" alt=""style={{width:"100%",height:"900px"}} />
       </div>
       <div className="container">
         <div className="left">

@@ -18,8 +18,14 @@ export const consultingApi = createApi({
                     'Content-Type': 'application/json'
                 }
               })
+          }),
+          deleteConsulting:builder.mutation({
+            query:(id)=> ({
+                url:`consulting/${id}`,
+                method:"DELETE"
+            })
           })
       })
   },
 })
-export const { useGetConsultingQuery, useAddConsultingMutation } = consultingApi
+export const { useGetConsultingQuery, useAddConsultingMutation,useDeleteConsultingMutation } = consultingApi

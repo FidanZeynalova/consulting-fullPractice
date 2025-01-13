@@ -56,6 +56,14 @@ app.delete("/consulting/:id", async (req, res) => {
     })
 })
 
+// Edit
+app.put("/consulting/:id", async (req, res) => {
+    let id = req.params.id
+    let updateConsulting = req.body
+    let updated = await ConsultingModel.findByIdAndUpdate({ _id: id }, updateConsulting, { new: true })
+    res.send(updated)
+})
+
 mongoose.connect(process.env.ConnectionUrl)
     .then(() => {
         console.log("Succes Connected");

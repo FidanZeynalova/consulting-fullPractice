@@ -4,15 +4,17 @@ import { Helmet } from 'react-helmet';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useGetConsultingQuery } from '../../App/slices/ConsultingSlice';
 
 function Add() {
+  let {refetch} = useGetConsultingQuery()
   let navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
       image: '',
       name: '',
-      specialition: '',
+      specialization: '',
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -22,20 +24,17 @@ function Add() {
       image: Yup.string()
         .url('Invalid URL format')
         .required('Image URL is required'),
-      specialition: Yup.string()
-        .min(5, 'Specialition must be at least 5 characters')
-        .max(20, 'Specialition must be 20 characters or less')
-        .required('Specialition is required'),
+      specialization: Yup.string()
+        .min(5, 'specialization must be at least 5 characters')
+        .max(20, 'specialization must be 20 characters or less')
+        .required('specialization is required'),
     }),
     onSubmit: async (values) => {
-      try {
-        await axios.post('http://localhost:7070/consulting', values);
-        navigate('/'); // Form uğurla göndərildikdən sonra yönləndir
-      } catch (error) {
-        console.error('Error adding consulting:', error);
-      }
-    },
-  });
+      await axios.post('http://localhost:7070/consulting', values);
+     refetch()
+      navigate('/')
+    }
+  })
 
   return (
     <>
@@ -74,13 +73,13 @@ function Add() {
             <div className="input">
               <input
                 type="text"
-                name="specialition"
-                placeholder="Add Specialition"
-                value={formik.values.specialition}
+                name="specialization"
+                placeholder="Add specialization"
+                value={formik.values.specialization}
                 onChange={formik.handleChange}
               />
-              {formik.touched.specialition && formik.errors.specialition && (
-                <div className="error" style={{ color: "red" }}>{formik.errors.specialition}</div>
+              {formik.touched.specialization && formik.errors.specialization && (
+                <div className="error" style={{ color: "red" }}>{formik.errors.specialization}</div>
               )}
             </div>
             <div className="btns">
